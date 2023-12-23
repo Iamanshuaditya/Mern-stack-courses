@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html{
+    font-size: 16px;
+ 
+}
+
+body{
+    font-family: 'Poppins'
+}
+@media screen and (max-width: 425px) {
+.group11{
+  display: none;
+}
+html{
+    font-size: 13px
+}
+
+
+}
+  
+@media screen and ((max-width: 768px ) and (min-width:420px)) {
+    html{
+        font-size: 15px
+    }
+
+    .group11{
+        display: none;
+    }
+}
+
+@media screen and (min-width:1525px) {
+    html{
+        font-size: 35px
+    }
+
+   
+}
+
+@media screen and (max-width: 320px) {
+    html{
+        font-size: 10px;
+    }
+}
+
