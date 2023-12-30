@@ -6,15 +6,18 @@ import Facebook from "../assets/Facebook.png";
 import google from "../assets/google.svg";
 import apple from "../assets/apple.svg";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AuthForm = ({ isLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   async function handleClick() {
     const url = isLogin
-      ? "http://localhost:3000/users/login"
-      : "http://localhost:3000/users/signup";
+      ? "http://localhost:3000/admin/login"
+      : "http://localhost:3000/admin/signup";
 
     console.log("Sending request with data:", { username, password });
     if (username === "" && password === "") {
@@ -31,7 +34,13 @@ const AuthForm = ({ isLogin }) => {
 
         const data = await response.json();
         if (response.ok) {
+          const token = data.token;
+          localStorage.setItem("token", token);
+
           toast.success(`${buttonText} Successfully`);
+          navigate("/addcourses");
+        } else {
+          toast.error(data.message || "Something went wrong");
         }
         console.log("Response:", data);
       } catch (error) {
@@ -47,7 +56,7 @@ const AuthForm = ({ isLogin }) => {
   const buttonText = isLogin ? "Login" : "Sign In";
   const promptText = isLogin
     ? "If you don't have an account "
-    : "Already have account? ";
+    : "Already have an account? ";
   const linkText = isLogin ? "Register here" : "Login here";
 
   return (
@@ -138,6 +147,7 @@ const AuthForm = ({ isLogin }) => {
     </div>
   );
 };
+
 AuthForm.propTypes = {
   isLogin: PropTypes.bool.isRequired,
 };

@@ -17,7 +17,7 @@ function App() {
             path="/"
             element={<SignIn isLogin={isLogin} setIsLogin={setIsLogin} />}
           />
-          <Route path="/addcourses" element={AddCourses} />
+          <Route path="/addcourses" element={<AddCourses />} />
           <Route path="/signup" element={<SignIn isLogin={isLogin} />} />
           <Route path="/login" element={<Login />} />
         </Routes>
