@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import Facebook from "../assets/Facebook.png";
 import google from "../assets/google.svg";
 import apple from "../assets/apple.svg";
+import toast, { Toaster } from "react-hot-toast";
 
 const AuthForm = ({ isLogin }) => {
   const [username, setUsername] = useState("");
@@ -12,12 +13,12 @@ const AuthForm = ({ isLogin }) => {
 
   async function handleClick() {
     const url = isLogin
-      ? "http://localhost:3000/users/signin"
+      ? "http://localhost:3000/users/login"
       : "http://localhost:3000/users/signup";
 
     console.log("Sending request with data:", { username, password });
     if (username === "" && password === "") {
-      alert("Please enter both Username and Password");
+      toast.error("Please enter both Username and Password");
     } else {
       try {
         const response = await fetch(url, {
@@ -30,12 +31,12 @@ const AuthForm = ({ isLogin }) => {
 
         const data = await response.json();
         if (response.ok) {
-          alert(`${buttonText} In SucessFully`);
+          toast.success(`${buttonText} Successfully`);
         }
         console.log("Response:", data);
       } catch (error) {
         console.error("Error:", error.message);
-        alert(error);
+        toast.error(error.message);
       }
     }
 
@@ -51,6 +52,7 @@ const AuthForm = ({ isLogin }) => {
 
   return (
     <div className="login">
+      <Toaster />
       <main className="flex justify-evenly relative top-[4.5em]">
         <div className="group11">
           <div className="group3">
