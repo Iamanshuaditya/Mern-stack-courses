@@ -36,6 +36,7 @@ const AuthForm = ({ isLogin }) => {
         if (response.ok) {
           const token = data.token;
           localStorage.setItem("token", token);
+          window.location = "/addcourses";
 
           toast.success(`${buttonText} Successfully`);
           navigate("/addcourses");

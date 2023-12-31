@@ -57,7 +57,7 @@ mongoose.connect(
 );
 
 app.get("/admin/me", authenticateJwt, (req, res) => {
-  res.json({ username: User.username });
+  res.json({ username: req.user.username });
 });
 
 app.post("/admin/signup", (req, res) => {

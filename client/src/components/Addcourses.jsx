@@ -50,6 +50,8 @@ export default function AddCourses() {
       .catch((error) => {
         console.error("Error:", error);
       });
+    setCourseDescription("");
+    setCourseTitle("");
   }
 
   return (
