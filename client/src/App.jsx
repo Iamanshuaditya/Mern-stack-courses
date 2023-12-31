@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Appbar from "./components/NavBar";
 import AddCourses from "./components/Addcourses";
 import Courses from "./components/Courses";
+import Course from "./components/Course";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -19,6 +20,7 @@ function App() {
             element={<SignIn isLogin={isLogin} setIsLogin={setIsLogin} />}
           />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/:courseId" element={<Course />} />
           <Route path="/addcourses" element={<AddCourses />} />
           <Route path="/signup" element={<SignIn isLogin={isLogin} />} />
           <Route path="/login" element={<Login />} />

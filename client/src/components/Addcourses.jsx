@@ -6,6 +6,8 @@ import Box from "@mui/material/Box";
 export default function AddCourses() {
   const [coursetitle, setCourseTitle] = useState("");
   const [coursedescription, setCourseDescription] = useState("");
+  const [courseImage, setCourseImage] = useState("");
+  const [coursePrice, setCoursePrice] = useState("");
 
   useEffect(() => {
     const localAuthToken = localStorage.getItem("token");
@@ -32,9 +34,8 @@ export default function AddCourses() {
       body: JSON.stringify({
         title: coursetitle,
         description: coursedescription,
-        price: 150,
-        imageLink:
-          "https://d33g7sdvsfd029.cloudfront.net/teachcode/admin/COURSE/cover/1699610005757WhatsApp-Image-2023-11-10-at-3.16.18-PM.jpeg",
+        price: coursePrice,
+        imageLink: courseImage,
         published: false,
       }),
     })
@@ -52,6 +53,8 @@ export default function AddCourses() {
       });
     setCourseDescription("");
     setCourseTitle("");
+    setCourseImage("");
+    setCoursePrice("");
   }
 
   return (
@@ -85,6 +88,37 @@ export default function AddCourses() {
           id="fullWidth"
           value={coursedescription}
           onChange={(e) => setCourseDescription(e.target.value)}
+        ></TextField>
+      </Box>
+      <Box
+        sx={{
+          width: 500,
+          maxWidth: "100%",
+          marginBottom: "2em",
+        }}
+      >
+        <TextField
+          fullWidth
+          label="ImageLink"
+          id="fullWidth"
+          value={courseImage}
+          onChange={(e) => setCourseImage(e.target.value)}
+        ></TextField>
+      </Box>
+      <Box
+        sx={{
+          width: 500,
+          maxWidth: "100%",
+          marginBottom: "2em",
+        }}
+      >
+        <TextField
+          fullWidth
+          label="coursePrice"
+          type="number"
+          id="fullWidth"
+          value={coursePrice}
+          onChange={(e) => setCoursePrice(e.target.value)}
         ></TextField>
       </Box>
       <Button variant="contained" onClick={handleClick}>
