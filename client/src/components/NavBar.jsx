@@ -48,8 +48,26 @@ function Appbar({ setIsLogin }) {
     return (
       <div className="logo flex justify-between items-center p-2 ">
         <h1 className=" font-semibold text-xl leading-8 m-3">Your Logo</h1>
-        <div className="flex justify-between w-[17em] mobile:w-[45%] items-center">
+
+        <div className="flex justify-between w-[30em] mobile:w-[45%] items-center">
           {userEmail}
+
+          <Button
+            variant="contained"
+            onClick={() => {
+              navigate("/courses");
+            }}
+          >
+            Courses
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => {
+              navigate("/addcourses");
+            }}
+          >
+            Add Courses
+          </Button>
           <Button
             variant="contained"
             onClick={() => {
