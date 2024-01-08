@@ -1,8 +1,12 @@
 import PropTypes from "prop-types";
+import { Button } from "@mui/material";
 
 function Card(props) {
   return (
     <>
+      <p>
+        <em>{props.description}</em>
+      </p>
       {props.imageLink ? (
         <img
           src={props.imageLink}
@@ -16,9 +20,10 @@ function Card(props) {
         <p>{props.title}</p>
         <p>${props.price}</p>
       </div>
-      <p>
-        <em>{props.description}</em>
-      </p>
+
+      <Button variant="contained" onClick={props.onClick}>
+        Edit{" "}
+      </Button>
     </>
   );
 }
@@ -28,6 +33,7 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default Card;

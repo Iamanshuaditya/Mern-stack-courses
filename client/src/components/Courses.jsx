@@ -39,13 +39,13 @@ function Courses() {
       {courses.map((course) => (
         <div
           key={course._id}
-          className="border-2 border-red-500  m-auto  w-1/3 p-5 text-left h-[27rem]"
-          onClick={() => handleClick(course._id)}
+          className="border-2 border-red-500  m-auto  w-1/3 p-5 text-left "
         >
           <Card
             imageLink={course.imageLink}
             title={course.title}
             price={course.price}
+            onClick={() => handleClick(course._id)}
             description={course.description}
           />
         </div>
